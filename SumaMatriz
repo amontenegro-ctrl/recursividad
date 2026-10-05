@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class SumaMatriz {
+
+    public static int sumar(int[][] matriz,
+                            int fila,
+                            int columna) {
+
+        if (fila == matriz.length) {
+            return 0;
+        }
+
+        if (columna == matriz[fila].length) {
+            return sumar(matriz, fila + 1, 0);
+        }
+
+        return matriz[fila][columna]
+                + sumar(matriz, fila, columna + 1);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print("Ingrese el numero de filas: ");
+        int filas = teclado.nextInt();
+
+        System.out.print("Ingrese el numero de columnas: ");
+        int columnas = teclado.nextInt();
+
+        int[][] matriz = new int[filas][columnas];
+
+        for (int i = 0; i < filas; i++) {
+
+            for (int j = 0; j < columnas; j++) {
+
+                System.out.print("Matriz["
+                        + i + "][" + j + "]: ");
+
+                matriz[i][j] = teclado.nextInt();
+            }
+        }
+
+        System.out.println("La suma de la matriz es: "
+                + sumar(matriz, 0, 0));
+
+        teclado.close();
+    }
+}

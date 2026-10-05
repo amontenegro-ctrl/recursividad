@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class SumaArreglo {
+
+    public static int sumar(int[] arreglo, int posicion) {
+
+        if (posicion == arreglo.length) {
+            return 0;
+        }
+
+        return arreglo[posicion]
+                + sumar(arreglo, posicion + 1);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print("Ingrese la cantidad de elementos: ");
+        int n = teclado.nextInt();
+
+        int[] arreglo = new int[n];
+
+        for (int i = 0; i < n; i++) {
+
+            System.out.print("Ingrese el elemento "
+                    + "[" + i + "]: ");
+
+            arreglo[i] = teclado.nextInt();
+        }
+
+        System.out.println("La suma de los elementos es: "
+                + sumar(arreglo, 0));
+
+        teclado.close();
+    }
+}
